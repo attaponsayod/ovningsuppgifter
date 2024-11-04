@@ -1,0 +1,23 @@
+name: env-variable-workflow
+
+on:
+  workflow_dispatch:
+
+jobs:
+  print-env-variables:
+    runs-on: ubuntu-latest
+    env:
+      GREETING: "Hello"
+      FAREWELL: "Goodbye"
+    steps:
+      - name: Print Custom Environment Variables
+        run: |
+          echo "Custom Greeting: $GREETING"
+          echo "Custom Farewell: $FAREWELL"
+
+      - name: Print GitHub Environment Variables
+        run: |
+          echo "Repository: ${{ github.repository }}"
+          echo "Workflow Name: ${{ github.workflow }}"
+          echo "Actor (who triggered the workflow): ${{ github.actor }}"
+          echo "Event Name: ${{ github.event_name }}"
